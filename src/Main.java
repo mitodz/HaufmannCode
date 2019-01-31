@@ -40,6 +40,10 @@ public class Main {
         return sb.toString();
     }
 
+    public static void printTree (Node tree) {
+        System.out.println(tree.getLetter().length() + " " + tree.);
+    }
+
     public static void main(String[] args) {
         Comparator<Node> comparatorString = Comparator.comparing(Node::getLetter,String::compareToIgnoreCase);
         Comparator<Node> comparator = Comparator.comparing(Node::getCount).thenComparing(comparatorString.reversed());

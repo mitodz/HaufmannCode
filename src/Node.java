@@ -13,9 +13,6 @@ public class Node {
         return count;
     }
 
-    public void setCount(long count) {
-        this.count = count;
-    }
 
     public String getLetter() {
         if (letter==null) {
@@ -24,9 +21,6 @@ public class Node {
         return letter;
     }
 
-    public void setLetter(String letter) {
-        this.letter = letter;
-    }
 
     public Node getLeft() {
         return left;
