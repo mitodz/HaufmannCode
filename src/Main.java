@@ -26,16 +26,16 @@ public class Main {
         }
     }
 
-    public static String writeCode(Node t, String letter){
-        StringBuilder sb = new StringBuilder();
+    public static String writeCode(Node t, String letter, StringBuilder sb){
+
         if (t.getLeft()==null && t.getRight()==null) return sb.toString();
         if (t.getLeft().getLetter().contains(letter)) {
             sb.append(1);
-            writeCode(t.getLeft(),letter);
+            writeCode(t.getLeft(),letter,sb);
         }
         if (t.getRight().getLetter().contains(letter)) {
             sb.append(0);
-            writeCode(t.getRight(),letter);
+            writeCode(t.getRight(),letter,sb);
         }
         return sb.toString();
     }
@@ -55,14 +55,6 @@ public class Main {
                 .stream()
                 .sorted(Map.Entry.<Character, Long>comparingByValue().thenComparing(Map.Entry::getKey))
                 .forEach(x -> q.add(new Node(Character.toString(x.getKey()),x.getValue())));
-
-//        Node m;
-//        while (!q.isEmpty()) {
-//            m=q.poll();
-//            System.out.println(m.getLetter() + ": " + m.getCount());
-//        }
-//
-
         Node i;
         Node j;
         for (long k = n + 1; k <= 2 * n - 1; k++) {
@@ -73,11 +65,8 @@ public class Main {
                 p.setRight(q.isEmpty() ? i : j);
                 q.add(p);
         }
-
         Node tree = q.poll();
-//        System.out.println(tree.getLetter());
-//        writeLetter(tree);
-        System.out.println(writeCode(tree,"b"));
+        StringBuilder sb = new StringBuilder();
+        System.out.println(writeCode(tree,"e",sb));
     }
-
 }
