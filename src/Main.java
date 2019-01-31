@@ -17,12 +17,12 @@ public class Main {
     }
 
     public static long getBits(Node tree, long bits) {
-        if (tree.getLeft() != null) {
-            bits += tree.getLeft().getCount();
+        if (tree.getLeft()!=null) {
+            bits+=tree.getLeft().getCount();
             getBits(tree.getLeft(),bits);
         }
-        if (tree.getRight() != null) {
-            bits += tree.getRight().getCount();
+        if (tree.getRight()!=null) {
+            bits+=tree.getRight().getCount();
             getBits(tree.getRight(),bits);
         }
         return bits;
