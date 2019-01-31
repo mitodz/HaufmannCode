@@ -3,29 +3,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
-
-    public static void writeLetter (Node t){
-        if (t.getLeft()!=null) {
-            System.out.println(t.getLeft().getLetter());
-            writeLetter(t.getLeft());
-        }
-        if (t.getRight()!=null) {
-            System.out.println(t.getRight().getLetter());
-            writeLetter(t.getRight());
-        }
-    }
-
-    public static void writeCount(Node t){
-        if (t.getLeft()!=null) {
-            System.out.println(t.getLeft().getCount());
-            writeCount(t.getLeft());
-        }
-        if (t.getRight()!=null) {
-            System.out.println(t.getRight().getCount());
-            writeCount(t.getRight());
-        }
-    }
-
     public static String writeCode(Node t, String letter, StringBuilder sb){
 
         if (t.getLeft()==null && t.getRight()==null) return sb.toString();
