@@ -40,6 +40,12 @@ public class Main {
         return sb.toString();
     }
 
+    public static Long getMaxNodeCount (Node t) {
+        if (t.getLeft().getCount()>t.getRight().getCount()) {
+            return t.getLeft().getCount();
+        } else return t.getRight().getCount();
+    }
+
     public static void printTree (Node tree) {
         System.out.println(tree.getLetter().length() + " " + tree.);
     }
@@ -49,7 +55,7 @@ public class Main {
         Comparator<Node> comparator = Comparator.comparing(Node::getCount).thenComparing(comparatorString.reversed());
         Queue<Node> q = new PriorityQueue<>(comparator);
 
-        Scanner scanner = new Scanner("aaaaaaaaaaaaaaabbbbbbbccccccddddddeeeeeffffffffffff");
+        Scanner scanner = new Scanner("aaaaaaaaaaaaaaabbbbbbbccccccddddddeeeee");
         String s = scanner.nextLine();
         long n = s.chars().distinct().count(); // количество уникальных букв
 
