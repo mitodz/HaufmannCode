@@ -62,7 +62,6 @@ public class Main {
 //            System.out.println(m.getLetter() + ": " + m.getCount());
 //        }
 //
-//        System.out.println("_____________");
 
         Node i;
         Node j;
