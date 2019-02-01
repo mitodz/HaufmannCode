@@ -18,11 +18,11 @@ public class Main {
 
     public static long getBits(Node tree, long bits) {
         if (tree.getLeft()!=null) {
-            bits+=tree.getLeft().getCount();
+            bits+=tree.getLeft().getCount() + tree.getRight().getCount();
             getBits(tree.getLeft(),bits);
         }
         if (tree.getRight()!=null) {
-            bits+=tree.getRight().getCount();
+            bits+=tree.getRight().getCount() + tree.getLeft().getCount();
             getBits(tree.getRight(),bits);
         }
         return bits;
