@@ -1,5 +1,6 @@
 class Node {
     private long count;
+    private long bits;
     private String letter;
     private Node left;
     private Node right;
@@ -9,14 +10,14 @@ class Node {
         this.letter = letter;
     }
 
-    long getBits(long bits) {
+    long getBits() {
         if (left!=null) {
             bits+=left.getCount() + right.getCount();
-            left.getBits(bits);
+            left.getBits();
         }
         if (right!=null) {
             bits+=right.getCount() + left.getCount();
-            right.getBits(bits);
+            right.getBits();
         }
         return bits;
     }

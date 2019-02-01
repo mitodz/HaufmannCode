@@ -17,10 +17,9 @@ public class Main {
     }
 
     static void printTree(Node tree) {
-        long bits = 0;
         String s = tree.getLetter();
         int n = s.length();
-        System.out.println(n + " " + tree.getBits(bits));
+        System.out.println(n + " " + tree.getBits());
         for (int i = 0; i < n; i++) {
             StringBuilder sb = new StringBuilder();
             System.out.println(s.charAt(i) + ": " + writeCode(tree, Character.toString(s.charAt(i)), sb));
