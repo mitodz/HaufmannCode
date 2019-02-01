@@ -1,15 +1,15 @@
-public class Node {
+class Node {
     private long count;
     private String letter;
     private Node left;
     private Node right;
 
-    public Node(String letter, long count) {
+    Node(String letter, long count) {
         this.count = count;
         this.letter = letter;
     }
 
-    public long getBits(long bits) {
+    long getBits(long bits) {
         if (left!=null) {
             bits+=left.getCount() + right.getCount();
             left.getBits(bits);
@@ -22,30 +22,30 @@ public class Node {
     }
 
 
-    public long getCount() {
+    long getCount() {
         return count;
     }
 
-    public String getLetter() {
+    String getLetter() {
         if (letter==null) {
             return "";
         }
         return letter;
     }
 
-    public Node getLeft() {
+    Node getLeft() {
         return left;
     }
 
-    public void setLeft(Node left) {
+    void setLeft(Node left) {
         this.left = left;
     }
 
-    public Node getRight() {
+    Node getRight() {
         return right;
     }
 
-    public void setRight(Node right) {
+    void setRight(Node right) {
         this.right = right;
     }
 }

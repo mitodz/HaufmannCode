@@ -3,7 +3,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static String writeCode(Node t, String letter, StringBuilder sb) {
+    static String writeCode(Node t, String letter, StringBuilder sb) {
         if (t.getLeft() == null && t.getRight() == null) return sb.toString();
         if (t.getLeft().getLetter().contains(letter)) {
             sb.append(1);
@@ -16,7 +16,7 @@ public class Main {
         return sb.toString();
     }
 
-    public static void printTree(Node tree) {
+    static void printTree(Node tree) {
         long bits = 0;
         String s = tree.getLetter();
         int n = s.length();
