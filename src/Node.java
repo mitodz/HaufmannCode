@@ -2,6 +2,7 @@ class Node {
     private long count;
     private static long bits;
     private String letter;
+    private static StringBuilder code = new StringBuilder();
     private Node left;
     private Node right;
 
@@ -22,6 +23,22 @@ class Node {
         return bits;
     }
 
+    String writeCode(String letter) {
+        if (left == null && right == null) return code.toString();
+        if (left.getLetter().contains(letter)) {
+            code.append(1);
+            left.writeCode(letter);
+        }
+        if (right.getLetter().contains(letter)) {
+            code.append(0);
+            right.writeCode(letter);
+        }
+        return code.toString();
+    }
+
+    void clearCode () {
+        code.setLength(0);
+    }
 
     long getCount() {
         return count;
