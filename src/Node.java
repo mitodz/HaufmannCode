@@ -9,10 +9,22 @@ public class Node {
         this.letter = letter;
     }
 
+    public long getBits(long bits) {
+        if (left!=null) {
+            bits+=left.getCount() + right.getCount();
+            left.getBits(bits);
+        }
+        if (right!=null) {
+            bits+=right.getCount() + left.getCount();
+            right.getBits(bits);
+        }
+        return bits;
+    }
+
+
     public long getCount() {
         return count;
     }
-
 
     public String getLetter() {
         if (letter==null) {
@@ -20,7 +32,6 @@ public class Node {
         }
         return letter;
     }
-
 
     public Node getLeft() {
         return left;

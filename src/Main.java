@@ -16,23 +16,11 @@ public class Main {
         return sb.toString();
     }
 
-    public static long getBits(Node tree, long bits) {
-        if (tree.getLeft()!=null) {
-            bits+=tree.getLeft().getCount() + tree.getRight().getCount();
-            getBits(tree.getLeft(),bits);
-        }
-        if (tree.getRight()!=null) {
-            bits+=tree.getRight().getCount() + tree.getLeft().getCount();
-            getBits(tree.getRight(),bits);
-        }
-        return bits;
-    }
-
     public static void printTree(Node tree) {
         long bits = 0;
         String s = tree.getLetter();
         int n = s.length();
-        System.out.println(n + " " + getBits(tree,bits));
+        System.out.println(n + " " + tree.getBits(bits));
         for (int i = 0; i < n; i++) {
             StringBuilder sb = new StringBuilder();
             System.out.println(s.charAt(i) + ": " + writeCode(tree, Character.toString(s.charAt(i)), sb));
