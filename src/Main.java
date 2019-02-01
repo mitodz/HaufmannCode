@@ -16,14 +16,17 @@ public class Main {
         return sb.toString();
     }
 
-    static void printTree(Node tree) {
-        String s = tree.getLetter();
-        int n = s.length();
-        System.out.println(n + " " + tree.getBits());
-        for (int i = 0; i < n; i++) {
+    static void printTree(String s, Node tree) {
+        String st = tree.getLetter();
+        int n = st.length();
+        System.out.println(n + " " + tree.getBits()); //реализация вывода уникальных букв и количества бит
+        for (int i = 0; i < n; i++) { //реализация кода на каждую букву
             StringBuilder sb = new StringBuilder();
-            System.out.println(s.charAt(i) + ": " + writeCode(tree, Character.toString(s.charAt(i)), sb));
-            //реализовать распечатку всего текста ввиде кода Хаффмана
+            System.out.println(st.charAt(i) + ": " + writeCode(tree, Character.toString(st.charAt(i)), sb));
+        }
+        for (int j = 0; j < s.length(); j++) {//реализация кода на весь текст
+            StringBuilder sb = new StringBuilder();
+            System.out.print(writeCode(tree, Character.toString(s.charAt(j)), sb));
         }
     }
 
@@ -32,7 +35,7 @@ public class Main {
         Comparator<Node> comparator = Comparator.comparing(Node::getCount).thenComparing(comparatorString);
         Queue<Node> q = new PriorityQueue<>(comparator);
 
-        Scanner scanner = new Scanner("abacabad");
+        Scanner scanner = new Scanner("abacabadddddd");
         String s = scanner.nextLine();
         long n = s.chars().distinct().count(); // количество уникальных букв
 
@@ -54,6 +57,6 @@ public class Main {
             q.add(p);
         }
         Node tree = q.poll();
-        printTree(tree);
+        printTree(s,tree);
     }
 }
