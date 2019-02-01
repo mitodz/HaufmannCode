@@ -3,6 +3,15 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
+    static String getFinalListOfSortedLetters (Queue<Node> q) {
+        Queue<Node> qClone = new PriorityQueue<>(q);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < q.size(); i++) {
+            sb.append(qClone.poll().getLetter());
+        }
+        return sb.reverse().toString();
+    }
+
     static String writeCode(Node t, String letter, StringBuilder sb) {
         if (t.getLeft() == null && t.getRight() == null) return sb.toString();
         if (t.getLeft().getLetter().contains(letter)) {
@@ -16,8 +25,7 @@ public class Main {
         return sb.toString();
     }
 
-    static void printTree(String s, Node tree) {
-        String st = tree.getLetter();
+    static void printTree(String s, String st, Node tree) {
         int n = st.length();
         System.out.println(n + " " + tree.getBits()); //реализация вывода уникальных букв и количества бит
         for (int i = 0; i < n; i++) { //реализация кода на каждую букву
@@ -45,6 +53,8 @@ public class Main {
                 .stream()
                 .sorted(Map.Entry.<Character, Long>comparingByValue().thenComparing(Map.Entry::getKey))
                 .forEach(x -> q.add(new Node(Character.toString(x.getKey()), x.getValue())));
+
+        String st = getFinalListOfSortedLetters(q); //финальный отсортированный список букв
         Node i;
         Node j;
         for (long k = n + 1; k <= 2 * n - 1; k++) {
@@ -57,6 +67,6 @@ public class Main {
             q.add(p);
         }
         Node tree = q.poll();
-        printTree(s,tree);
+        printTree(s,st,tree);
     }
 }
