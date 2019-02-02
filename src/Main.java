@@ -19,11 +19,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Comparator<Node> comparatorString = Comparator.comparing(Node::getLetter, String::compareToIgnoreCase).reversed();
-        Comparator<Node> comparator = Comparator.comparing(Node::getCount).thenComparing(comparatorString);
+        Comparator<Node> comparatorString = Comparator.comparing(Node::getLetter, String::compareToIgnoreCase).reversed();//
+        Comparator<Node> comparatorStringCount = Comparator.comparing(Node::getLetter,Comparator.comparing(String::length,Integer::compareTo)).reversed();
+        Comparator<Node> comparator = comparatorStringCount.thenComparing(Node::getCount).thenComparing(comparatorString);
         Queue<Node> q = new PriorityQueue<>(comparator);
 
-        Scanner scanner = new Scanner("abacabadddd");
+        Scanner scanner = new Scanner("abacabaddddd");
         String s = scanner.nextLine();
         long n = s.chars().distinct().count(); // количество уникальных букв
 
@@ -39,11 +40,9 @@ public class Main {
         for (long k = n + 1; k <= 2 * n - 1; k++) {
             i = q.poll();
             j = q.poll();
-            boolean isEmptyAndAlphabeticCompare = q.isEmpty() && (i.getLetter().compareToIgnoreCase(j.getLetter())>0);
-            Node p = new Node(isEmptyAndAlphabeticCompare ? i.getLetter() + j.getLetter() :
-                    j.getLetter() + i.getLetter(), i.getCount() + j.getCount());
-            p.setLeft(isEmptyAndAlphabeticCompare ? j : i);
-            p.setRight(isEmptyAndAlphabeticCompare ? i : j);
+            Node p = new Node(q.isEmpty() && n%2!=0 ? i.getLetter() + j.getLetter() : j.getLetter() + i.getLetter(), i.getCount() + j.getCount());
+            p.setLeft(i);
+            p.setRight(j);
             q.add(p);
         }
         Node tree = q.poll();
