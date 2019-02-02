@@ -24,7 +24,7 @@ public class Main {
         Comparator<Node> comparator = comparatorStringCount.thenComparing(Node::getCount).thenComparing(comparatorString);
         Queue<Node> q = new PriorityQueue<>(comparator);
 
-        Scanner scanner = new Scanner("abacabaddddd");
+        Scanner scanner = new Scanner("aaaaaaaaaaaaaaabbbbbbbccccccddddddeeeee");//aaaaaaaaaaaaaaabbbbbbbccccccddddddeeeee
         String s = scanner.nextLine();
         long n = s.chars().distinct().count(); // количество уникальных букв
 
@@ -40,7 +40,7 @@ public class Main {
         for (long k = n + 1; k <= 2 * n - 1; k++) {
             i = q.poll();
             j = q.poll();
-            Node p = new Node(q.isEmpty() && n%2!=0 ? i.getLetter() + j.getLetter() : j.getLetter() + i.getLetter(), i.getCount() + j.getCount());
+            Node p = new Node(j.getLetter() + i.getLetter(), i.getCount() + j.getCount());
             p.setLeft(i);
             p.setRight(j);
             q.add(p);
