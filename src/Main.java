@@ -22,7 +22,7 @@ public class Main {
         Comparator<Node> comparator = Comparator.comparing(Node::getCount, Long::compareTo).thenComparing(comparatorString);
         Queue<Node> q = new PriorityQueue<>(comparator);
 
-        Scanner scanner = new Scanner("abacabad");//aaaaaaaaaaaaaaabbbbbbbccccccddddddeeeee
+        Scanner scanner = new Scanner(System.in);//aaaaaaaaaaaaaaabbbbbbbccccccddddddeeeee
         String s = scanner.nextLine();
         StringBuilder sb = new StringBuilder();
         long n = s.chars().distinct().count(); // количество уникальных букв

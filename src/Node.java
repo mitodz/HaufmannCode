@@ -1,7 +1,6 @@
 class Node {
     private long count;
     private static long bits;
-    private static int childs;
     private String letter;
     private static StringBuilder code = new StringBuilder();
     private Node left;
@@ -10,18 +9,6 @@ class Node {
     Node(String letter, long count) {
         this.count = count;
         this.letter = letter;
-    }
-
-    int getChildsCount () {
-        if (left!=null) {
-            childs++;
-            left.getChildsCount();
-        }
-        if (right!=null) {
-            childs++;
-            right.getChildsCount();
-        }
-        return childs;
     }
 
     long getBits() {
@@ -64,16 +51,8 @@ class Node {
         return letter;
     }
 
-    Node getLeft() {
-        return left;
-    }
-
     void setLeft(Node left) {
         this.left = left;
-    }
-
-    Node getRight() {
-        return right;
     }
 
     void setRight(Node right) {
