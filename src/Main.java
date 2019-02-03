@@ -19,9 +19,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Comparator<Node> comparatorString = Comparator.comparing(Node::getLetter, String::compareToIgnoreCase).reversed();//
-        Comparator<Node> comparatorStringCount = Comparator.comparing(Node::getLetter,Comparator.comparing(String::length,Integer::compareTo)).reversed();
-        Comparator<Node> comparator = comparatorStringCount.thenComparing(Node::getCount).thenComparing(comparatorString);
+        Comparator<Node> comparatorString = Comparator.comparing(Node::getLetter, Comparator.comparing(x -> x.charAt(0),Character::compareTo)).reversed();//
+        Comparator<Node> comparator = Comparator.comparing(Node::getCount,Long::compareTo).thenComparing(comparatorString);
         Queue<Node> q = new PriorityQueue<>(comparator);
 
         Scanner scanner = new Scanner("aaaaaaaaaaaaaaabbbbbbbccccccddddddeeeee");//aaaaaaaaaaaaaaabbbbbbbccccccddddddeeeee
@@ -43,7 +42,7 @@ public class Main {
             Node p = new Node(j.getLetter() + i.getLetter(), i.getCount() + j.getCount());
             p.setLeft(i);
             p.setRight(j);
-            q.add(p);
+            q.offer(p);
         }
         Node tree = q.poll();
         printTree(s,tree);
