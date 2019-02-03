@@ -26,8 +26,12 @@ public class Main {
         String s = scanner.nextLine();
         StringBuilder sb = new StringBuilder();
         long n = s.chars().distinct().count(); // количество уникальных букв
+        long m = s.chars().count(); // количество повторяющихся букв
         if (n == 1) {
-            System.out.print("1 1\n" + s + ": 0\n0");
+            System.out.print("1 "+m+"\n" + s.charAt(0) + ": 0\n");
+            for (int i = 0; i < m; i++) {
+                System.out.print(0);
+            }
         } else {
             s.chars().mapToObj(x -> (char) x)
                     .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
